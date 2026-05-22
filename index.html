@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>System Check</title>
+
+<style>
+body{
+  background:black;
+  color:#00ff00;
+  font-family: monospace;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.box{
+  width:320px;
+}
+
+input,button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+}
+
+button{
+  background:#00ff00;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#log{
+  margin-top:15px;
+  white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>System Access</h2>
+
+<input id="email" type="email" placeholder="Digite seu email">
+<button onclick="start()">Confirmar acesso</button>
+
+<div id="log"></div>
+</div>
+
+<script>
+function start(){
+  const email = document.getElementById("email").value;
+  const log = document.getElementById("log");
+
+  let steps = [
+    "Conectando ao servidor...",
+    "Verificando identidade: " + email,
+    "Analisando sistema...",
+    "Acesso temporário concedido...",
+    "Monitorando atividade...",
+    "Nenhuma invasão detectada ✔",
+    "Encerrando sessão..."
+  ];
+
+  log.innerText = "";
+
+  let i = 0;
+
+  let interval = setInterval(()=>{
+    log.innerText += steps[i] + "\n";
+    i++;
+
+    if(i >= steps.length){
+      clearInterval(interval);
+    }
+  }, 900);
+}
+</script>
+
+</body>
+</html>
